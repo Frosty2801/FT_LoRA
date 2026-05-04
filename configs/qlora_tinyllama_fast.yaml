@@ -1,0 +1,25 @@
+model_name: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+dataset_train: data/helpdesk/train.jsonl
+dataset_eval: data/helpdesk/eval.jsonl
+output_dir: outputs/helpdesk-qlora-fast
+
+max_seq_length: 256
+num_train_epochs: 1
+max_steps: 5
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 1
+learning_rate: 0.0002
+warmup_steps: 0
+logging_steps: 1
+eval_steps: 5
+save_steps: 5
+optim: adamw_torch
+
+lora_r: 4
+lora_alpha: 8
+lora_dropout: 0.05
+target_modules:
+  - q_proj
+  - v_proj
+
+seed: 42
